@@ -6,10 +6,12 @@
     }
   },
   "module": {
-    "type": "es6",
+    "type": "commonjs",
     "noInterop": false
   },
-  "exclude": ["__tests__"],
+  "exclude": [
+    "__tests__"
+  ],
   "sourceMaps": true,
   "minify": true
 }
