@@ -1,0 +1,13 @@
+name: Lint, Test and Release
+
+on:
+  push:
+    branches:
+      - "main"
+jobs:
+  lint-and-test:
+    uses: otedesco/gh-action-templates/.github/workflows/lint-and-test.yml@main
+
+  release:
+    uses: otedesco/gh-action-templates/.github/workflows/release-library.yml@main
+    secrets: inherit
