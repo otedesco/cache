@@ -17,7 +17,6 @@
     "url": "https://github.com/otedesco/cache.git"
   },
   "scripts": {
-    "preinstall": "npx only-allow pnpm",
     "build": "pnpm run clean && pnpm run type:dts && pnpm run build:main",
     "build:main": "swc ./src -d ./dist",
     "clean": "rimraf build coverage nyc_output",
