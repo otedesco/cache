@@ -30,7 +30,7 @@
     "test:watch": "vitest watch",
     "test:coverage": "vitest run --coverage",
     "spell:check": "cspell \"{README.md,CODE_OF_CONDUCT.md,CONTRIBUTING.md,.github/*.md,src/**/*.ts}\"",
-    "release": "pnpm publish --no-git-check",
+    "release": "pnpm build && changeset publish",
     "commit": "pnpm changeset"
   },
   "dependencies": {
