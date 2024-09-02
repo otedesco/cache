@@ -1,0 +1,25 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "words": [
+    "cache",
+    "conventionalcommits",
+    "degit",
+    "eclass",
+    "esbuild",
+    "execa",
+    "npmlog",
+    "octocat",
+    "apart-re",
+    "rmrf",
+    "socio"
+  ],
+  "flagWords": [],
+  "ignorePaths": [
+    "package.json",
+    "package-lock.json",
+    "yarn.lock",
+    "tsconfig.json",
+    "node_modules/**"
+  ]
+}

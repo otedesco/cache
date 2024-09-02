@@ -1,0 +1,66 @@
+{
+  "name": "@otedesco/cache",
+  "version": "0.0.0",
+  "type": "commonjs",
+  "exports": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "license": "MIT",
+  "engines": {
+    "pnpm": ">8.6.10"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/otedesco/cache.git"
+  },
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "build": "pnpm run clean && pnpm run type:dts && pnpm run build:main",
+    "build:main": "swc ./src -d ./dist",
+    "clean": "rimraf build coverage nyc_output",
+    "type:dts": "tsc --emitDeclarationOnly --project tsconfig.build.json",
+    "type:check": "tsc --noEmit",
+    "format": "prettier \"src/**/*.ts\" --write",
+    "format:check": "prettier \"src/**/*.ts\" --check",
+    "lint": "eslint src --ext .ts --fix",
+    "lint:check": "eslint src --ext .ts",
+    "test": "vitest run --passWithNoTests",
+    "test:watch": "vitest watch",
+    "test:coverage": "vitest run --coverage",
+    "spell:check": "cspell \"{README.md,CODE_OF_CONDUCT.md,CONTRIBUTING.md,.github/*.md,src/**/*.ts}\"",
+    "release": "pnpm publish --no-git-check",
+    "commit": "pnpm changesets"
+  },
+  "dependencies": {
+    "@changesets/cli": "^2.27.7",
+    "lodash": "^4.17.21",
+    "redis": "^4.7.0"
+  },
+  "devDependencies": {
+    "@swc/cli": "^0.1.65",
+    "@swc/core": "^1.7.22",
+    "@types/lodash": "^4.17.7",
+    "@types/node": "^20.16.3",
+    "@types/prompts": "^2.4.9",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "c8": "^8.0.1",
+    "cspell": "^6.31.3",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^8.10.0",
+    "eslint-import-resolver-typescript": "^3.6.3",
+    "eslint-plugin-eslint-comments": "^3.2.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "nyc": "^15.1.0",
+    "prettier": "^3.3.3",
+    "rimraf": "^5.0.10",
+    "source-map-support": "^0.5.21",
+    "typescript": "^5.5.4",
+    "vitest": "^0.33.0",
+    "winston": "^3.14.2"
+  }
+}

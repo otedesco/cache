@@ -1,0 +1,67 @@
+name: "Setup"
+description: "Setup node.js environment"
+inputs:
+  node-version:
+    description: Node version to be installed
+    required: false
+    default: "18.17.0"
+  npm-version:
+    description: NPM version to be installed
+    required: false
+    default: "9.6.7"
+  pnpm-version:
+    description: PNPM version to be installed
+    required: false
+    default: "8.15.6"
+  os:
+    description: Runner os
+    required: false
+    default: "ubuntu-latest"
+runs:
+  using: "composite"
+  steps:
+    - name: Set node/npm versions using volta
+      uses: volta-cli/action@v4
+      with:
+        node-version: "${{ inputs.node-version }}"
+        npm-version: "${{ inputs.npm-version }}"
+
+    - name: Install PNPM
+      uses: pnpm/action-setup@v4
+      with:
+        version: "${{ inputs.pnpm-version }}"
+
+    - name: Install bun
+      uses: oven-sh/setup-bun@v1
+      continue-on-error: true
+
+    - id: versions
+      name: Print node/npm/pnpm versions
+      shell: bash
+      run: |
+        node_ver=$( node --version )
+        pnpm_ver=$( pnpm --version || true )
+        echo "Node: ${node_ver:1}"
+        echo "NPM: $(npm --version)"
+        if [[ $pnpm_ver != '' ]]; then echo "PNPM: $pnpm_ver"; fi
+        echo "node_version=${node_ver:1}" >> "$GITHUB_OUTPUT"
+
+    - name: Use the node_modules cache if available [pnpm]
+      uses: actions/cache@v4
+      with:
+          key: ${{ runner.os }}-pnpm-${{ github.sha }}
+          restore-keys: |
+                ${{ runner.os }}-pnpm-
+          path: ~/.local/share/pnpm
+
+    - name: Install dependencies
+      shell: bash
+      run: pnpm install --prefer-offline
+
+    - name: Cache turbo build setup
+      uses: actions/cache@v4
+      with: 
+        path: .turbo
+        key: ${{ runner.os }}-turbo-${{ github.sha }}
+        restore-keys: |
+              ${{ runner.os }}-turbo-
