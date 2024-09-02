@@ -1,5 +1,11 @@
 # @otedesco/cache
 
+## 0.0.3
+
+### Patch Changes
+
+- [#5](https://github.com/otedesco/cache/pull/5) [`8bd0c2b`](https://github.com/otedesco/cache/commit/8bd0c2bf919a0b5e013738b602c0aa8f7db13175) Thanks [@otedesco](https://github.com/otedesco)! - fix release script
+
 ## 0.0.2
 
 ### Patch Changes
