@@ -1,5 +1,11 @@
 # @otedesco/cache
 
+## 0.0.5
+
+### Patch Changes
+
+- [#11](https://github.com/otedesco/cache/pull/11) [`10950b0`](https://github.com/otedesco/cache/commit/10950b066273bb099ba494b97aba2fa97f370e30) Thanks [@otedesco](https://github.com/otedesco)! - Test ci
+
 ## 0.0.4
 
 ### Patch Changes
