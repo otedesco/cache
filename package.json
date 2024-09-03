@@ -34,12 +34,12 @@
     "commit": "pnpm changeset"
   },
   "dependencies": {
-    "@changesets/changelog-github": "^0.5.0",
-    "@changesets/cli": "^2.27.7",
     "lodash": "^4.17.21",
     "redis": "^4.7.0"
   },
   "devDependencies": {
+    "@changesets/changelog-github": "^0.5.0",
+    "@changesets/cli": "^2.27.7",
     "@swc/cli": "^0.1.65",
     "@swc/core": "^1.7.22",
     "@types/lodash": "^4.17.7",
