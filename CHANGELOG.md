@@ -1,5 +1,13 @@
 # @otedesco/cache
 
+## 0.0.6
+
+### Patch Changes
+
+- [#13](https://github.com/otedesco/cache/pull/13) [`586037b`](https://github.com/otedesco/cache/commit/586037b0e8c1be8b2b15d2d3d2feb5da13fd153a) Thanks [@otedesco](https://github.com/otedesco)! - Automate release
+
+- [#13](https://github.com/otedesco/cache/pull/13) [`eb18e44`](https://github.com/otedesco/cache/commit/eb18e44bd73b8524aa0997fc68806f45f592739b) Thanks [@otedesco](https://github.com/otedesco)! - format code
+
 ## 0.0.5
 
 ### Patch Changes
