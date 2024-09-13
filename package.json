@@ -5,9 +5,6 @@
   "exports": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "license": "MIT",
-  "engines": {
-    "pnpm": ">8.6.10"
-  },
   "publishConfig": {
     "access": "public",
     "registry": "https://npm.pkg.github.com"

@@ -3,95 +3,13 @@ name: Quality checks
 on:
   workflow_call:
   pull_request:
-    types: [opened, edited]
+    types: [opened, edited, reopened, synchronize]
     branches:
-      - "*"
+      - "main"
+      - "develop"
+      - "stage"
 
 jobs:
-  build:
-    name: Build
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-    defaults:
-      run:
-        working-directory: ${{ github.workspace }}
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 2
-      - name: Setup environment
-        uses: otedesco/cache/.github/actions/setup-environment@main
-        with:
-          os: ubuntu-latest
-      - name: Build
-        run: bun run build
-
-  typecheck:
-    name: Typecheck
-    needs: [build]
-    timeout-minutes: 15
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Check out code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 2
-
-      - name: Setup environment
-        uses: otedesco/cache/.github/actions/setup-environment@main
-        with:
-          os: ubuntu-latest
-
-      - name: Typecheck
-        run: bun run type:check
-
-  tests:
-    needs: [build]
-    name: Tests
-    timeout-minutes: 15
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Check out code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 2
-
-      - name: Setup environment
-        uses: otedesco/cache/.github/actions/setup-environment@main
-        with:
-          os: ubuntu-latest
-
-      - name: Test
-        run: bun run test
-
-      # - name: Upload coverage reports to Codecov
-      #   uses: codecov/codecov-action@v3
-      #   env:
-      #     CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-
-  linting:
-    name: Linting
-    needs: [build]
-    timeout-minutes: 15
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Check out code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 2
-
-      - name: Setup environment
-        uses: otedesco/cache/.github/actions/setup-environment@main
-        with:
-          os: ubuntu-latest
-
-      - name: Linting
-        env:
-          NODE_OPTIONS: "--max_old_space_size=4096"
-        continue-on-error: true
-        run: bun run lint:check
+  lint-and-test:
+    uses: otedesco/gh-action-templates/.github/workflows/lint-and-test.yml@main
+    secrets: inherit
