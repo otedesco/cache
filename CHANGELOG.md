@@ -1,5 +1,11 @@
 # @otedesco/cache
 
+## 0.0.7
+
+### Patch Changes
+
+- [#15](https://github.com/otedesco/cache/pull/15) [`36e3f22`](https://github.com/otedesco/cache/commit/36e3f229bacee2f110ddbccf7ae67c90412cbf4c) Thanks [@otedesco](https://github.com/otedesco)! - centralize gh wf
+
 ## 0.0.6
 
 ### Patch Changes
