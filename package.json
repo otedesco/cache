@@ -13,6 +13,11 @@
     "type": "git",
     "url": "https://github.com/otedesco/cache.git"
   },
+  "engines": {
+    "node": "24.20.0",
+    "pnpm": "10.34.0"
+  },
+  "packageManager": "pnpm@10.34.0",
   "scripts": {
     "build": "pnpm run clean && pnpm run type:dts && pnpm run build:main",
     "build:main": "swc ./src -d ./dist",
