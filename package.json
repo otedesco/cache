@@ -28,12 +28,13 @@
     "format:check": "prettier \"src/**/*.ts\" --check",
     "lint": "eslint src --ext .ts --fix",
     "lint:check": "eslint src --ext .ts",
-    "test": "vitest run --passWithNoTests",
+    "test": "vitest run",
     "test:watch": "vitest watch",
     "test:coverage": "vitest run --coverage",
     "spell:check": "cspell \"{README.md,CODE_OF_CONDUCT.md,CONTRIBUTING.md,.github/*.md,src/**/*.ts}\"",
     "release": "pnpm build && changeset publish",
-    "commit": "pnpm changeset"
+    "commit": "pnpm changeset",
+    "quality:check": "pnpm run format:check && pnpm run lint:check && pnpm run type:check && pnpm run test && pnpm run test:coverage && pnpm run build"
   },
   "dependencies": {
     "lodash": "^4.17.21",
