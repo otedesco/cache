@@ -1,15 +1,9 @@
 {
-  "include": [
-    "./src/**/*.ts"
-  ],
+  "include": ["./src/**/*.ts"],
   "compilerOptions": {
-    "typeRoots": [
-      "node_modules/@types"
-    ],
+    "typeRoots": ["node_modules/@types"],
     "importHelpers": true,
-    "lib": [
-      "ESNext"
-    ],
+    "lib": ["ESNext"],
     "target": "es2020",
     "module": "esnext",
     "declaration": true,
