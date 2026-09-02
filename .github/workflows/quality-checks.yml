@@ -11,5 +11,5 @@ on:
 
 jobs:
   lint-and-test:
-    uses: otedesco/gh-action-templates/.github/workflows/lint-and-test.yml@46eefa62da65e573739f4ac686560cd14bb7849b # central quality workflow release 2026-09-02
+    uses: otedesco/gh-action-templates/.github/workflows/lint-and-test.yml@b0bd33051b7b5b8ebe0a8f5a1c588ea0d466ed2d # central quality workflow release 2026-09-02
     secrets: inherit
