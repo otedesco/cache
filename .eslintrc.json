@@ -8,11 +8,7 @@
   "parserOptions": {
     "project": "./tsconfig.json"
   },
-  "plugins": [
-    "import",
-    "@typescript-eslint",
-    "simple-import-sort"
-  ],
+  "plugins": ["import", "@typescript-eslint", "simple-import-sort"],
   "extends": [
     "eslint:recommended",
     "plugin:eslint-comments/recommended",
