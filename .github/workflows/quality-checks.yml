@@ -9,7 +9,12 @@ on:
       - "develop"
       - "stage"
 
+permissions:
+  contents: read
+
 jobs:
   lint-and-test:
+    permissions:
+      contents: read
     uses: otedesco/gh-action-templates/.github/workflows/lint-and-test.yml@46eefa62da65e573739f4ac686560cd14bb7849b # central quality workflow release 2026-09-02
-    secrets: inherit
+    secrets: {}
