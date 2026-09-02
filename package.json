@@ -30,7 +30,7 @@
     "lint:check": "eslint src --ext .ts --max-warnings 0",
     "test": "vitest run",
     "test:watch": "vitest watch",
-    "test:coverage": "vitest run --coverage --coverage.provider=v8 --coverage.reporter=text --coverage.reporter=json-summary --coverage.reporter=lcov --coverage.reporter=cobertura",
+    "test:coverage": "vitest run --coverage.enabled --coverage.provider=v8 --coverage.reporter=text --coverage.reporter=json-summary --coverage.reporter=lcov --coverage.reporter=cobertura",
     "spell:check": "cspell \"{README.md,CODE_OF_CONDUCT.md,CONTRIBUTING.md,.github/*.md,src/**/*.ts}\"",
     "release": "pnpm build && changeset publish",
     "commit": "pnpm changeset",
