@@ -10,19 +10,11 @@ on:
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
-permissions: {}
-
 jobs:
   quality-checks:
-    permissions:
-      contents: read
     uses: otedesco/gh-action-templates/.github/workflows/lint-and-test.yml@46eefa62da65e573739f4ac686560cd14bb7849b # central quality workflow release 2026-09-02
-    secrets: {}
+    secrets: inherit
   release-packages:
     needs: [quality-checks]
-    permissions:
-      contents: write
-      pull-requests: write
     uses: otedesco/gh-action-templates/.github/workflows/release-package.yml@46eefa62da65e573739f4ac686560cd14bb7849b # central quality workflow release 2026-09-02
-    secrets:
-      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+    secrets: inherit
