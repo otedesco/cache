@@ -124,3 +124,5 @@ export default {
   del,
   flush,
 };
+
+export { del, flush, get, set };

@@ -1,7 +1,14 @@
 import _isEmpty from "lodash/isEmpty";
 import type { Logger } from "winston";
 
-import Redis, { type Options as RedisOptions } from "./redis";
+import {
+  del,
+  flush,
+  get,
+  init as initRedis,
+  type Options as RedisOptions,
+  set,
+} from "./redis";
 
 export type Options = RedisOptions;
 let logger: Logger;
@@ -11,7 +18,7 @@ export type Resolver<Args, Result> = (arg: Args) => Promise<Result>;
 function init(conf: Options) {
   logger = conf.logger;
 
-  return Redis.init(conf);
+  return initRedis(conf);
 }
 
 const _shouldSave = (value: any) => value && !_isEmpty(value);
@@ -22,7 +29,7 @@ const _rememberValue = async <Args, Result>(
   resolver: Resolver<Args, Result>,
   argsObject: Args,
 ) => {
-  const cachedValue = await Redis.get(setKey).catch((err: Error) => {
+  const cachedValue = await get(setKey).catch((err: Error) => {
     logger.warn(
       `Unable to get value for key ${setKey} err: ${JSON.stringify(err)}`,
     );
@@ -33,7 +40,7 @@ const _rememberValue = async <Args, Result>(
 
   if (_shouldSave(resolvedValue)) {
     try {
-      await Redis.set(setKey, resolvedValue, expire);
+      await set(setKey, resolvedValue, expire);
     } catch (err) {
       logger.warn(
         `Unable to set remembered value for key ${setKey} err: ${JSON.stringify(err)}`,
@@ -46,7 +53,7 @@ const _rememberValue = async <Args, Result>(
 
 const _forgetKeys = async (keys: string | string[]) => {
   try {
-    await Redis.del(keys);
+    await del(keys);
   } catch (err) {
     // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
     logger.warn(`Unable to forgetKeys for keys ${keys} err: ${err}`);
@@ -77,8 +84,6 @@ async function forget<Args, Result>(
 
   return resolver(argsObject);
 }
-
-const flush = Redis.flush;
 
 export default {
   init,
