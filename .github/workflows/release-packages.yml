@@ -12,9 +12,9 @@ concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   quality-checks:
-    uses: otedesco/gh-action-templates/.github/workflows/lint-and-test.yml@0a9c7f317a2e922aed37b526918fa16d51b8041e # OPS-182 consumer compatibility fix
+    uses: otedesco/gh-action-templates/.github/workflows/lint-and-test.yml@9282fc2387d782afa7d461afbd51c89a1918abdb # OPS-182 consumer compatibility fix
     secrets: inherit
   release-packages:
     needs: [quality-checks]
-    uses: otedesco/gh-action-templates/.github/workflows/release-package.yml@0a9c7f317a2e922aed37b526918fa16d51b8041e # OPS-182 consumer compatibility fix
+    uses: otedesco/gh-action-templates/.github/workflows/release-package.yml@9282fc2387d782afa7d461afbd51c89a1918abdb # OPS-182 consumer compatibility fix
     secrets: inherit
