@@ -10,11 +10,18 @@ on:
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
+permissions: {}
+
 jobs:
   quality-checks:
-    uses: otedesco/gh-action-templates/.github/workflows/lint-and-test.yml@9282fc2387d782afa7d461afbd51c89a1918abdb # OPS-182 consumer compatibility fix
-    secrets: inherit
+    permissions:
+      contents: read
+    uses: otedesco/gh-action-templates/.github/workflows/lint-and-test.yml@528e0d92182a23a12f9d6d4dae67c4b0e98fcffb # OPS-183 least-privilege workflows
   release-packages:
     needs: [quality-checks]
-    uses: otedesco/gh-action-templates/.github/workflows/release-package.yml@9282fc2387d782afa7d461afbd51c89a1918abdb # OPS-182 consumer compatibility fix
-    secrets: inherit
+    permissions:
+      contents: write
+      pull-requests: write
+    uses: otedesco/gh-action-templates/.github/workflows/release-package.yml@528e0d92182a23a12f9d6d4dae67c4b0e98fcffb # OPS-183 least-privilege workflows
+    secrets:
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
