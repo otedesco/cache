@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "repository": "cache",
+  "commit": "f1a2a37dd1bea72a77cd77ab71574a1d5da940c6",
+  "timestamp": "2026-09-03T00:00:00Z",
+  "metrics": {
+    "statements": { "covered": 84, "total": 356, "percent": 23.595505617977526 },
+    "branches": { "covered": 10, "total": 18, "percent": 55.55555555555556 },
+    "functions": { "covered": 6, "total": 10, "percent": 60 },
+    "lines": { "covered": 84, "total": 356, "percent": 23.595505617977526 }
+  }
+}
