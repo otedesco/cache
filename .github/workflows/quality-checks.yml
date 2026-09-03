@@ -16,11 +16,27 @@ jobs:
   lint-and-test:
     permissions:
       contents: read
-    uses: otedesco/gh-action-templates/.github/workflows/lint-and-test.yml@528e0d92182a23a12f9d6d4dae67c4b0e98fcffb # OPS-183 least-privilege workflows
+      packages: read
+    uses: otedesco/gh-action-templates/.github/workflows/lint-and-test.yml@1ff2338701930c90d43887953e2827bef2f7bbc0 # OPS-186 package-authenticated central workflow
+
+  quality-gate:
+    name: Quality / core
+    if: ${{ always() }}
+    needs: [lint-and-test]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Require quality workflow
+        env:
+          QUALITY_RESULT: ${{ needs.lint-and-test.result }}
+        run: test "$QUALITY_RESULT" = success
 
   security:
     name: Security / aggregate
     permissions:
       contents: read
       pull-requests: read
-    uses: otedesco/gh-action-templates/.github/workflows/security.yml@32dcc51235dc1332104aab1ceb461e495ba8761f # OPS-184 security gates
+      security-events: write
+      packages: read
+    uses: otedesco/gh-action-templates/.github/workflows/security.yml@1ff2338701930c90d43887953e2827bef2f7bbc0 # OPS-186 package-authenticated central workflow
