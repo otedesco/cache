@@ -11,5 +11,5 @@ on:
 
 jobs:
   lint-and-test:
-    uses: otedesco/gh-action-templates/.github/workflows/lint-and-test.yml@dc35994d4f78f96059e0a13008e04d12c2ad51f9 # central coverage gate release 2026-09-02
+    uses: otedesco/gh-action-templates/.github/workflows/lint-and-test.yml@93379e36e551d3642c961a25b724a61c15b14421 # central coverage report compatibility release 2026-09-03
     secrets: inherit
